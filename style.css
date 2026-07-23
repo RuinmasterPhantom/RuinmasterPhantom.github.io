@@ -1,6 +1,8 @@
 /* Import fonts used */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Define CSS variables to store colors  *
+ * This makes it easier to change colors */
 :root {
     --base-color: #ffffff;
     --text-color: #000000;
@@ -11,12 +13,15 @@
     --color-3: #f6f3f9;
 }
 
+/* Remove default spacing, to prevent unexpected behavior */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Define base styles for the page  *
+ * Other fonts are fallbacks        */
 html {
     font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color)
@@ -31,11 +36,14 @@ h1, h2, h3 {
     font-family: Merriweather, Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Navigation bar                                   *
+ *  auto margins on left and right keep it centered */
 nav {
     margin: 1em auto 3em auto;
     width: min(1000px, 100%);
 }
 
+/* 'display: flex' to make the list horizontal */
 nav ul {
     display: flex;
     align-items: center;
@@ -43,6 +51,81 @@ nav ul {
     gap: 2em;
 }
 
+/* Keep first element isolated on the left */
 nav li:first-child {
     margin-right: auto;
+    font-family: Merriweather, Poppins;
+    font-weight: bold;
+}
+
+/* 'text-decoration: none' to remove default underline */
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Underline hovered navigation text */
+nav a:hover {
+    text-decoration: underline;
+}
+
+header, section {
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-1);
+    padding: min(2em, 15%);
+    border-radius: 1em;
+}
+
+/* Adjust the container with the portrait image. What they do:
+    arrange chart elements side by side
+    centered horizontally
+    centered vertically
+    let content stack on smaller screens
+    adds space between image and text
+     */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+/* What they do:
+    make sure image doesn't overflow container
+    round the corners
+    fill the area without stretching (crop instead)
+    if cropping happens, avoid this part */
+header img {
+    max-width: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.text-container {
+    flex: 0 1 34em;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.text-container p {
+    margin: .75em 0 1em 0;
+}
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--primary-color);
+    padding: .75em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+.secondary {
+    background-color: var(--secondary-color);
 }
